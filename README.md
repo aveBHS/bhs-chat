@@ -1,2 +1,2 @@
-# bhs-chat
+# BHS Chat
  

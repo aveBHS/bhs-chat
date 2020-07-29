@@ -1,4 +1,9 @@
 const {app, BrowserWindow} = require("electron");
+const request = require('request');
+
+function loadMessages(){
+    
+}
 
 function start(){
     let main = new BrowserWindow({

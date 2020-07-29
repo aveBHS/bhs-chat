@@ -1,1 +1,18 @@
-<h1>Hello, world!</h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сообщения</title>
+</head>
+<body>
+    <div id="user"></div>
+    <script>
+        let renderTo = document.getElementById("user");
+        let userId = "5f1c19da6a9369fc075e4d11";
+        const {getUser, renderUser} = require("../js/users");
+    </script>
+    <input id="userIdInput" value="5f1c19da6a9369fc075e4d11">
+    <button onclick="getUser(document.getElementById('userIdInput').value, renderUser, renderTo);">Get User</button>
+</body>
+</html>

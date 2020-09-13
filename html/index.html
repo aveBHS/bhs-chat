@@ -7,12 +7,21 @@
 </head>
 <body>
     <div id="user"></div>
+    <hr>
+    <div id="messages"></div>
     <script>
         let renderTo = document.getElementById("user");
+        let renderToMsg = document.getElementById("messages");
         let userId = "5f1c19da6a9369fc075e4d11";
+        let token = "123";
+
         const {getUser, renderUser} = require("../js/users");
+        const {getMessages, renderMessages} = require("../js/messages");
+        
     </script>
-    <input id="userIdInput" value="5f1c19da6a9369fc075e4d11">
+    <b>Юзер: </b><input id="userIdInput" value="5f1c19da6a9369fc075e4d11"><br>
+    <b>Сообщения: </b><input id="msgIdInput" value="5f5deeafdb9ae231f84f50d2">
     <button onclick="getUser(document.getElementById('userIdInput').value, renderUser, renderTo);">Get User</button>
+<button onclick="setInterval(() => {getMessages(document.getElementById('msgIdInput').value, token, renderMessages, renderToMsg);}, 1000);">Get Msg</button>
 </body>
 </html>

@@ -1,13 +1,13 @@
-exports.getUser = function(userId, render, renderTo){
+exports.getUser = function(userId, callback, renderTo){
     const request = require('request');
 
     let reqUrl = "http://localhost:3000/api/users/" + userId;
     request.get(reqUrl, (err, response) => {
         if(err || response.statusCode != 200){
-            render(renderTo, JSON.parse(response.body).err, null);
+            callback(renderTo, JSON.parse(response.body).err, null);
         }
         else{
-            render(renderTo, null, JSON.parse(response.body));
+            callback(renderTo, null, JSON.parse(response.body));
         }
     });
 }

@@ -16,12 +16,15 @@
         let token = "123";
 
         const {getUser, renderUser} = require("../js/users");
-        const {getMessages, renderMessages} = require("../js/messages");
+        const {getMessages, renderMessages, sendMessage} = require("../js/messages");
         
     </script>
-    <b>Юзер: </b><input id="userIdInput" value="5f1c19da6a9369fc075e4d11"><br>
+    <hr>
     <b>Сообщения: </b><input id="msgIdInput" value="5f5deeafdb9ae231f84f50d2">
-    <button onclick="getUser(document.getElementById('userIdInput').value, renderUser, renderTo);">Get User</button>
-<button onclick="setInterval(() => {getMessages(document.getElementById('msgIdInput').value, token, renderMessages, renderToMsg);}, 1000);">Get Msg</button>
+    <button onclick="setInterval(() => {getMessages(document.getElementById('msgIdInput').value, token, renderMessages, renderToMsg);}, 1000);">Get Msg</button>
+    <hr>
+    <b>Кому: </b><input id="userIdInput" value="5f5deeafdb9ae231f84f50d2"><br>
+    <textarea id="text"></textarea><br>
+    <button onclick="sendMessage(userId, token, document.getElementById(`text`).value, undefined, (msg) => { if(msg != `OK`) alert(msg); });">Отправить</button>
 </body>
 </html>

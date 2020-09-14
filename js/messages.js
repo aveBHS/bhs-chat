@@ -53,7 +53,7 @@ exports.renderMessages = function(renderTo, error, data, userId){
     messages.forEach((data) => {
         if(error == null){
             renderTo.innerHTML += `<div style="${userId != data.fromId ? "background: #EEE" : ""}">
-            <b>${users[data.fromId].name}:</b>\n
+            <b>${users[data.fromId].name}:</b> (<i>${new Date(data.date * 1000).toLocaleString()}</i>)\n
             <p>${data.text}</p>
             ${(data.attacments == "" ? "" : `<b>Attachments: ${data.attacments}</b>`)}
             </div>

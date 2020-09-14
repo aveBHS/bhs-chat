@@ -1,30 +1,46 @@
-<!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сообщения</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-    <div id="user"></div>
-    <hr>
-    <div id="messages"></div>
+    <div id = "menu">
+
+        <div id="user">
+
+        </div>
+    </div>
+
+    <div id = "chat">
+        <div class="head">
+
+        </div>
+
+        <div id="chat_body">
+            
+        </div>
+
+        <div class="input">
+            <input id="userIdInput" value="5f5deeafdb9ae231f84f50d2" type="hidden">
+            <textarea id="text" style="background: #333844; color: white;height: 50px; width: 300px;"></textarea>
+            <button onclick="sendMessage(document.getElementById(`userIdInput`).value, token, document.getElementById(`text`).value, undefined, (msg) => { if(msg != `OK1`) alert(msg); });">Отправить</button>
+        </div>
+    </div>
+
     <script>
-        let renderTo = document.getElementById("user");
-        let renderToMsg = document.getElementById("messages");
+        let renderToMsg = [
+            document.getElementById("chat_body"),
+            document.getElementById("head")
+        ];
         let userId = "5f1c19da6a9369fc075e4d11";
         let token = "123";
 
-        const {getUser, renderUser} = require("../js/users");
+        //const {getUser, renderUser} = require("../js/users");
         const {getMessages, renderMessages, sendMessage} = require("../js/messages");
-        
+        setInterval(() => { getMessages(document.getElementById('userIdInput').value, token, renderMessages, renderToMsg); }, 2000);
     </script>
-    <hr>
-    <b>Сообщения: </b><input id="msgIdInput" value="5f5deeafdb9ae231f84f50d2">
-    <button onclick="setInterval(() => {getMessages(document.getElementById('msgIdInput').value, token, renderMessages, renderToMsg);}, 1000);">Get Msg</button>
-    <hr>
-    <b>Кому: </b><input id="userIdInput" value="5f5deeafdb9ae231f84f50d2"><br>
-    <textarea id="text"></textarea><br>
-    <button onclick="sendMessage(userId, token, document.getElementById(`text`).value, undefined, (msg) => { if(msg != `OK`) alert(msg); });">Отправить</button>
+
 </body>
 </html>
